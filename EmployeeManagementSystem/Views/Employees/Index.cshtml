@@ -1,0 +1,73 @@
+﻿@model IEnumerable<EmployeeManagementSystem.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Employees")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpSalary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpPosition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpDepartment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpJoinDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpSalary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpPosition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpDepartment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpJoinDate)
+        </td>
+        <td>              
+            @Html.ActionLink("Edit", "Edit", new { id = item.EmpId })         
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.EmpId })           
+            @Html.ActionLink("Delete", "Delete", new { id=item.EmpId})*@            
+
+            @using (Html.BeginForm("Delete", "Employees", FormMethod.Post))
+            {                
+                @Html.AntiForgeryToken()
+                @Html.Hidden("id", item.EmpId)                
+                <input type="submit" value="Delete" class="btn btn-default" />                   
+            }            
+        </td>
+
+    </tr>
+}
+
+</table>
