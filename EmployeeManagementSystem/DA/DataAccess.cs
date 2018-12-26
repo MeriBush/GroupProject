@@ -12,8 +12,7 @@ namespace EmployeeManagementSystem.DA
     {
         public static SqlConnection GetConnection()
         {
-            //string connectionString = @"Data Source=WIN2012BASE;Initial Catalog = SimpleEmployeeDB;
-            //        Integrated Security = True";
+            
             string connectionString = "enter a connection string";
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = connectionString;

@@ -50,7 +50,7 @@ namespace EmployeeManagementSystem.Controllers
                 }            
                 
             }
-            catch
+            catch(Exception)
             {
                 return View(employee);
             }
@@ -87,7 +87,7 @@ namespace EmployeeManagementSystem.Controllers
                     return View(employee);
                 }
             }
-            catch
+            catch(Exception)
             {
                 return View(employee);
             }
@@ -105,7 +105,7 @@ namespace EmployeeManagementSystem.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception)
             {
                 return RedirectToAction("Index");
             }
