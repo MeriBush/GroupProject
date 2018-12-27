@@ -37,20 +37,27 @@ namespace EmployeeManagementSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Employee employee)
         {
-            try
+            if (ModelState.IsValid)
             {
-                int createdEmployees = DataAccess.AddNewEmployee(employee);   
-                if(createdEmployees == 1)
+                try
                 {
-                    return RedirectToAction("Index");
+                    int createdEmployees = DataAccess.AddNewEmployee(employee);
+                    if (createdEmployees == 1)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        return View(employee);
+                    }
+
                 }
-                else
+                catch (Exception)
                 {
                     return View(employee);
-                }            
-                
+                }
             }
-            catch(Exception)
+            else
             {
                 return View(employee);
             }
@@ -75,19 +82,26 @@ namespace EmployeeManagementSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Employee employee)
         {
-            try
+            if (ModelState.IsValid)
             {
-                int employeesUpdated = DataAccess.EditEmployee(employee);
-                if (employeesUpdated == 1)
+                try
                 {
-                    return RedirectToAction("Index");
+                    int employeesUpdated = DataAccess.EditEmployee(employee);
+                    if (employeesUpdated == 1)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        return View(employee);
+                    }
                 }
-                else
+                catch (Exception)
                 {
                     return View(employee);
                 }
             }
-            catch(Exception)
+            else
             {
                 return View(employee);
             }

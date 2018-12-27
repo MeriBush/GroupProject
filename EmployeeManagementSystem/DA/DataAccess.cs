@@ -12,8 +12,9 @@ namespace EmployeeManagementSystem.DA
     {
         public static SqlConnection GetConnection()
         {
-            
-            string connectionString = "enter a connection string";
+
+            string connectionString = "String";
+
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = connectionString;
             connection.Open();
